@@ -42,6 +42,7 @@ def solve_equation_auto(data, equations, max_iterations=10):
 
             try:
                 solution = sp.solve(sympy_equation, variables[solve_for])
+                print(f"{solve_for} =", sp.latex(solution).replace("\\left[", "").replace("\\right]", "").strip())
                 if solution:
                     numerical_solution = solution[0].subs(substitutions).evalf()
                     if numerical_solution.is_Number:
