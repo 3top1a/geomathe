@@ -1,6 +1,7 @@
 import math
 import sympy as sp
 import inspect
+import dearpygui.dearpygui as ui
 
 def data_input(data):
     for name in data:
@@ -44,7 +45,7 @@ def solve_equation_auto(data, equations, max_iterations=10):
                 solution = sp.solve(sympy_equation, variables[solve_for])
                 print(f"{solve_for} =", sp.latex(solution).replace("\\left[", "").replace("\\right]", "").strip())
                 if solution:
-                    numerical_solution = solution[0].subs(substitutions).evalf()
+                    numerical_solution = solution[-1].subs(substitutions).evalf()
                     if numerical_solution.is_Number:
                         print(f"{solve_for} = {numerical_solution}")
                         print()
